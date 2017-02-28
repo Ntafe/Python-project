@@ -1,0 +1,15 @@
+import urllib2
+response = urllib2.urlopen('https://api.punkapi.com/v2/beers/random')
+html = response.read()
+html=html.replace(",","\n")
+email=raw_input("dwse to email sou:")
+
+import requests
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/samples.mailgun.org/messages",
+        auth=("api", "key-3ax6xnjp29jd6fds4gc373sgvjxteol0"),
+        data={"from": "Excited User <excited@samples.mailgun.org>",
+              "to": ["%s"%email],
+              "subject": "Hello",
+              "text": html})
