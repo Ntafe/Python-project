@@ -1,0 +1,14 @@
+import urllib2
+import json
+onoma=raw_input("dwse ti 8es na fas: ")
+response = urllib2.urlopen('http://food2fork.com/api/search?key=29bc80fa6d1e6ae0256a00d53c13d362&q=shredded+%s'%onoma)
+html = response.read()
+k=json.loads(html)["recipes"]
+print "food:\n"
+print k[0]
+print "\n"
+response2 = urllib2.urlopen('https://api.punkapi.com/v2/beers/random')
+html = response2.read()
+html=html.replace(",","\n")
+print "beer:\n"
+print html
